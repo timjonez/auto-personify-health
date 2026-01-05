@@ -178,6 +178,7 @@ require("dotenv").config();
       );
     } else {
       await safeClick("#card-true-button", "Card true button", true);
+      await safeClick("#quiz-complete-button", "Quiz complete button", true);
     }
 
     await safeClick(
@@ -193,6 +194,7 @@ require("dotenv").config();
       );
     } else {
       await safeClick("#card-true-button", "Card true button", true);
+      await safeClick("#quiz-complete-button", "Quiz complete button", true);
     }
 
     await page.goto("https://app.personifyhealth.com/#/stats-page");

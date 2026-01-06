@@ -202,15 +202,11 @@ require("dotenv").config();
     await page.click("#steps-card-button");
     await page.fill("#self-enter-steps-input", "6000");
     await page.click("#activity-save-btn");
-
-    console.log("Add your button clicking code above this line");
   } catch (error) {
     console.error("Error during authentication:", error.message);
     await page.screenshot({ path: "error-screenshot.png" });
     console.log("Error screenshot saved as error-screenshot.png");
   } finally {
-    //console.log("Keeping browser open for inspection. Press Ctrl+C to exit.");
-    // Keep browser open for debugging - uncomment the line below to auto-close
     await browser.close();
   }
 })();

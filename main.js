@@ -11,7 +11,7 @@ require("dotenv").config();
   }
 
   console.log("Starting browser...");
-  const browser = await chromium.launch({ headless: false, slowMo: 100 });
+  const browser = await chromium.launch({ headless: true, slowMo: 100 });
   const page = await browser.newPage();
 
   try {
@@ -200,7 +200,10 @@ require("dotenv").config();
     await page.goto("https://app.personifyhealth.com/#/stats-page");
 
     await page.click("#steps-card-button");
-    await page.fill("#self-enter-steps-input", "6000");
+    await page.fill(
+      "#self-enter-steps-input",
+      String(Math.floor(Math.random() * 3001) + 5000),
+    );
     await page.click("#activity-save-btn");
   } catch (error) {
     console.error("Error during authentication:", error.message);

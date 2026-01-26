@@ -124,6 +124,21 @@ require("dotenv").config();
       console.log("Navigation timeout, checking current state:", page.url());
     }
 
+    if (page.url().includes("login-actions/authenticate")) {
+      await page.click("#send-mfa-code-button");
+      const readline = require("readline").createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+
+      readline.question("Input 2FA code: ", async (code) => {
+        await page.fill("#security-code-input", code);
+        await page.click("#submit-security-code-button");
+        readline.close();
+        await page.waitForTimeout(1000);
+      });
+    }
+
     console.log("Authentication successful! Now clicking buttons...");
 
     // Wait a bit for the page to fully load
